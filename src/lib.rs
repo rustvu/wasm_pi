@@ -1,14 +1,15 @@
 use rand::random;
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
-pub fn add(a: i32, b: i32) -> i32 {
-    return a + b;
-}
+
+// Note: this is not the most efficient rendering approach of
+// the results, but simple enough to understand.
+// A better alternative would be to use a buffer for the points and then
+// render the buffer to the canvas in JavaScript.
 
 #[wasm_bindgen]
 pub fn monte_carlo_pi(n_samples: u32) -> f64 {
-    let context = get_canvas_context();
+    let context = get_canvas_context();    
     let mut n_inside = 0;
     for _ in 0..n_samples {
         // Generate a random point in the unit square
@@ -23,6 +24,7 @@ pub fn monte_carlo_pi(n_samples: u32) -> f64 {
         // Draw a "point"
         context.fill_rect(x, y, 0.01, 0.01);
     }
+    
     4.0 * (n_inside as f64) / (n_samples as f64)
 }
 

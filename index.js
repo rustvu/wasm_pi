@@ -11,14 +11,18 @@ window.compute_pi = async () => {
         alert("Please enter a number");
     }
     else {
-        // Instantiate our wasm module
+        // Instantiate our wasm module (or use the one that was already instantiated)
         const wasm_pi = await init();
 
-        // Call the Add function export from wasm, save the result
-        const addResult = wasm_pi.monte_carlo_pi(n_samples);
-
-        // Set the result on the page
-        document.getElementById("result").textContent = addResult;
+        // Compute the result with WebAssembly
+        try {
+            const pi_estimate = wasm_pi.monte_carlo_pi(n_samples);
+            
+            // Set the result on the page
+            document.getElementById("pi_estimate").textContent = pi_estimate;
+        } catch (e) {
+            alert("Wasm error: " + e.message);
+        }
     }
 
     // Re-enable the compute button
