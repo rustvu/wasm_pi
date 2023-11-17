@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wasm Pi</title>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <h2>Monte-Carlo PI Estimation</h2>
+    <p>
+      This page uses WebAssembly to compute an estimation of π using the
+      Monte-Carlo method.
+    </p>
+    <label for="n_samples">Number of random samples (optional):</label>
+    <input type="text" id="n_samples" name="n_samples" value="1000">
+    <button id="compute-button" onclick="compute_pi();">Compute</button>
+    <br />
+    <strong>Estimated value of π: <span id="result"></span></strong>
+
+    <div>
+        <canvas id="canvas" width="600" height="600"></canvas>
+    </div>
+  </body>
+</html>
+</head>
+<body>
+
