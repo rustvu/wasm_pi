@@ -1,5 +1,5 @@
 [package]
-name = "wasm-pi"
+name = "wasm_pi"
 version = "0.1.0"
 authors = ["Peter Volgyesi <peter.volgyesi@gmail.com>"]
 edition = "2018"
